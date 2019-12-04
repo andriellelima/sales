@@ -51,6 +51,10 @@ public class ClienteControlador {
 		return "clienteGerenciamento";
 	}
 
+	public Cliente recuperar(int codigo) {
+		return cg.recuperar(codigo);
+	}
+	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -61,6 +65,10 @@ public class ClienteControlador {
 
 	public List<Cliente> getClientes() {
 		return cg.recuperarTodosPorNomeContendo(chave);
+	}
+	
+	public List<Cliente> getTodos(){
+		return cg.recuperarTodos();
 	}
 	
 	public String getChave() {

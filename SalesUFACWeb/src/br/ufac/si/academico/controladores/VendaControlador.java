@@ -24,7 +24,7 @@ public class VendaControlador {
 
 	public String incluir() {
 		this.venda = new Venda();
-		return "incluirVenda";
+		return "vendaInclusao";
 	}
 	
 	public String editar(Venda venda) {
@@ -63,10 +63,10 @@ public class VendaControlador {
 	public void setVenda(Venda venda) {
 		this.venda = venda;
 	}
-
-	public List<Venda> getVendas() {
-		return vg.recuperarTodosPorNomeContendo(chave);
-	}
+//
+//	public List<Venda> getVendas() {
+//		return vg.recuperarTodosPorNomeContendo(chave);
+//	}
 	
 	public String getChave() {
 		return chave;
@@ -74,6 +74,10 @@ public class VendaControlador {
 
 	public void setChave(String chave) {
 		this.chave = chave;
+	}
+	
+	public List<Venda> gettodos(){
+		return vg.recuperarTodos();
 	}
 
 

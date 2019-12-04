@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/geral.xhtml">
+		<ui:define name="conteudo">
+			<h2>#{msgs['venda.inclusao']}</h2>
+
+			<h:form>
+
+				<div class="form-group">
+					<label for="data">Data da Venda:</label>
+					<h:inputText class="form-control" id="data"
+						value="#{vendaControlador.venda.dataVenda}" />
+				</div>
+
+				<div class="form-group">
+					<label for="produto">Produto</label>
+					<h:selectOneMenu id="Produto" converter="produtoConversor"
+						value="#{vendaControlador.venda.produto}" required="true">
+						<f:selectItems value="#{produtoControlador.produtosPorId}"
+							var="Produto" itemValue="#{Produto}" itemLabel="#{Produto.nome}" />
+					</h:selectOneMenu>
+
+				</div>
+
+				<div class="form-group">
+					<label for="quantidade">Quantidade</label>
+					<h:inputText class="form-control" id="quantidade"
+						value="#{vendaControlador.venda.quantidade}" />
+				</div>
+
+				<div class="form-group">
+					<label for="preco">valor</label>
+					<h:inputText type="email" class="form-control" id="valor"
+						value="#{vendaControlador.venda.valor}" />
+				</div>
+
+
+				<div class="form-group">
+					<label for="produto">Cliente</label>
+					<h:selectOneMenu id="cliente" converter="clienteConversor"
+						value="#{vendaControlador.venda.cliente}" required="true">
+						<f:selectItems value="#{clienteControlador.todos}"
+							var="Cliente" itemValue="#{Cliente}" itemLabel="#{Cliente.nome}" />
+					</h:selectOneMenu>
+
+				</div>
+
+				<h:commandButton value="confirmar"
+					action="#{vendaControlador.adicionar}" />
+				<h:commandButton value="cancelar" action="vendaGerenciamento"
+					immediate="true" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

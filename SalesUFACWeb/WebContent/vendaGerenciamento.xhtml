@@ -22,7 +22,7 @@
 
 				<h:commandButton value="voltar" action="index" />
 
-				<h:dataTable value="#{vendaControlador.vendas}"
+				<h:dataTable value="#{vendaControlador.todos}"
 					var="venda" border="1">
 
 					<h:column>
@@ -31,15 +31,15 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Produto</f:facet>
-				        #{venda.produto}
+				        #{venda.produto.nome}
 					</h:column>
 					<h:column>
 						<f:facet name="header">Vendedor</f:facet>
-				        #{venda.vendedor}	    
+				        #{venda.vendedor.nome}	    
 					</h:column>
 					<h:column>
 						<f:facet name="header">Cliente</f:facet>
-						#{venda.cliente}
+						#{venda.cliente.nome}
 					</h:column>
 					<h:column>
 						<f:facet name="header">Valor</f:facet>
@@ -50,10 +50,7 @@
 						<f:facet name="header">
 					#{msgs['gerenciamento.operacoes']}
 				</f:facet>
-						<h:commandButton value="editar"
-							action="#{vendaControlador.editar(venda)}" />
-						<h:commandButton value="excluir"
-							action="#{vendaControlador.excluir(venda)}" />
+						
 					</h:column>
 
 				</h:dataTable>

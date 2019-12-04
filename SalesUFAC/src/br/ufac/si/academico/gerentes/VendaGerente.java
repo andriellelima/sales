@@ -22,14 +22,14 @@ public class VendaGerente {
 		try{
 			em.getTransaction().begin();
 			venda.getCliente().setFidelidade((int)venda.getCliente().getFidelidade()+venda.getQuantidade());
-			venda.getProduto().setQuantidade((venda.getProduto().getQuantidade()-venda.getQuantidade()));
+			venda.getProduto().setQuantidade((int)(venda.getProduto().getQuantidade()-venda.getQuantidade()));
 			em.merge(venda.getCliente());
 			em.merge(venda.getProduto());
 			em.persist(venda);
 			em.getTransaction().commit();
 		}catch(Exception e) {
 			venda.getCliente().setFidelidade((int)venda.getCliente().getFidelidade()-venda.getQuantidade());
-			venda.getProduto().setQuantidade((venda.getProduto().getQuantidade()+venda.getQuantidade()));
+			venda.getProduto().setQuantidade((int)(venda.getProduto().getQuantidade()+venda.getQuantidade()));
 			em.merge(venda.getCliente());
 			em.merge(venda.getProduto());
 		}
@@ -64,17 +64,17 @@ public class VendaGerente {
 		return em.createNamedQuery("Venda.todos")
 				.getResultList();	
 	}
-	@SuppressWarnings("unchecked")
-	public List<Venda> recuperarTodosPorNome(){
-		return em.createNamedQuery("Venda.todosPorNome")
-				.getResultList();
-	}
-	@SuppressWarnings("unchecked")
-	public List<Venda> recuperarTodosPorNomeContendo(String termo){
-		return em
-				.createNamedQuery("Venda.todosPorNomeContendo")
-				.setParameter("termo", "%"+termo+"%")
-				.getResultList();
-	}	
+//	@SuppressWarnings("unchecked")
+//	public List<Venda> recuperarTodosPorNome(){
+//		return em.createNamedQuery("Venda.todosPorNome")
+//				.getResultList();
+//	}
+//	@SuppressWarnings("unchecked")
+//	public List<Venda> recuperarTodosPorNomeContendo(String termo){
+//		return em
+//				.createNamedQuery("Venda.todosPorNomeContendo")
+//				.setParameter("termo", "%"+termo+"%")
+//				.getResultList();
+//	}	
 
 }
