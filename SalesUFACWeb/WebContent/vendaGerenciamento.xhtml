@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/geral.xhtml">
+		<ui:define name="conteudo">
+			<h2>#{msgs['venda.gerenciamento']}</h2>
+
+			<h:form>
+				<h:outputLabel value="Pesquisa:" for="chave" />
+				<h:inputText id="chave" value="#{vendaControlador.chave}" />
+				<h:commandButton action="null" value="buscar" />
+
+				<h:commandButton value="Incluir"
+					action="#{vendaControlador.incluir}" />
+
+				<h:commandButton value="voltar" action="index" />
+
+				<h:dataTable value="#{vendaControlador.vendas}"
+					var="venda" border="1">
+
+					<h:column>
+						<f:facet name="header">Data</f:facet>
+				        #{venda.dataVenda}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Produto</f:facet>
+				        #{venda.produto}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Vendedor</f:facet>
+				        #{venda.vendedor}	    
+					</h:column>
+					<h:column>
+						<f:facet name="header">Cliente</f:facet>
+						#{venda.cliente}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Valor</f:facet>
+				        #{venda.valor}
+				        
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+					#{msgs['gerenciamento.operacoes']}
+				</f:facet>
+						<h:commandButton value="editar"
+							action="#{vendaControlador.editar(venda)}" />
+						<h:commandButton value="excluir"
+							action="#{vendaControlador.excluir(venda)}" />
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

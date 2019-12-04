@@ -11,41 +11,53 @@ public class VendaGerente {
 
 	private EntityManagerFactory emf;
 	private EntityManager em;
-	
+
 	public VendaGerente() {
 		emf = Persistence.createEntityManagerFactory("SalesUFAC");
 		em = emf.createEntityManager();
 	}
-	
+
 	public void adicionar(Venda venda) {
-		
-		em.getTransaction().begin();
-		em.persist(venda);
-		em.getTransaction().commit();
+
+		try{
+			em.getTransaction().begin();
+			venda.getCliente().setFidelidade((int)venda.getCliente().getFidelidade()+venda.getQuantidade());
+			venda.getProduto().setQuantidade((venda.getProduto().getQuantidade()-venda.getQuantidade()));
+			em.merge(venda.getCliente());
+			em.merge(venda.getProduto());
+			em.persist(venda);
+			em.getTransaction().commit();
+		}catch(Exception e) {
+			venda.getCliente().setFidelidade((int)venda.getCliente().getFidelidade()-venda.getQuantidade());
+			venda.getProduto().setQuantidade((venda.getProduto().getQuantidade()+venda.getQuantidade()));
+			em.merge(venda.getCliente());
+			em.merge(venda.getProduto());
+		}
 	}
-	
+
+
 	public Venda recuperar(int id) {
 		return em.find(Venda.class, id);
 	}
-	
+
 	public void atualizar(Venda venda) {
 		em.getTransaction().begin();
 		em.merge(venda);
 		em.getTransaction().commit();
 	}
-	
+
 	public void remover(Venda venda) {
 		em.getTransaction().begin();
 		em.remove(venda);
 		em.getTransaction().commit();
 	}
-	
-	
+
+
 	public void encerrar() {
 		em.close();
 		emf.close();
 	}
-	
+
 
 	@SuppressWarnings("unchecked")
 	public List<Venda> recuperarTodos(){
@@ -64,5 +76,5 @@ public class VendaGerente {
 				.setParameter("termo", "%"+termo+"%")
 				.getResultList();
 	}	
-	
+
 }

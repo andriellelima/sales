@@ -30,9 +30,9 @@ public class Anuncio {
 	@ManyToOne
 	@JoinColumn(name="vendedor")
 	private Vendedor vendedor;
-	@ManyToMany
+	@ManyToOne
 	@JoinColumn(name="anuncio")
-	private List <Produto> produtos = new ArrayList<>();
+	private Produto produtos;
 //	@Column(nullable=false)
 //	private long quantProdutoDisp;
 	@Column(nullable=false)
@@ -43,8 +43,8 @@ public class Anuncio {
 	private String dtinicio;
 	@Column(nullable=false)
 	private String dtfim;
-//	@Temporal(TemporalType.TIMESTAMP)
-	private String hora;
+	@Column(nullable=false)
+	private String horario;
 	private long quantProdutoDisp;
 	
 	
@@ -59,14 +59,14 @@ public class Anuncio {
 
 	public Anuncio() {}
 	
-	public Anuncio(String nome,Vendedor vendedor, long quantProdutoDisp, String dtinicio, String dtfim, String local, String horario)  {
+	public Anuncio(String nome,Vendedor vendedor,Produto produto , long quantProdutoDisp, String dtinicio, String dtfim, String local, String horario)  {
 		this.vendedor = vendedor;
-		this.produtos = produtos;
+		this.produtos = produto;
 		this.quantProdutoDisp = quantProdutoDisp;
 		this.dtinicio = dtinicio;
 		this.dtfim = dtfim;
 		this.local = local;
-		this.hora = horario;
+		this.horario = horario;
 	}
 	public int getId() {
 		return id;
@@ -80,10 +80,10 @@ public class Anuncio {
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
-	public List<Produto> getProdutos() {
+	public Produto getProdutos() {
 		return produtos;
 	}
-	public void setProdutos(List<Produto> produtos) {
+	public void setProdutos(Produto produtos) {
 		this.produtos = produtos;
 	}
 	public long getQuantProdutoDisp() {
@@ -114,30 +114,29 @@ public class Anuncio {
 	}
 	
 
-	public String getHora() {
-		return hora;
+	public String getHorario() {
+		return horario;
 	}
 
-	public void setHora(String hora) {
-		this.hora = hora;
+	public void setHorario(String hora) {
+		this.horario = hora;
 	}
 
 	@Override
 	public String toString() {
 		return "Anuncio [id=" + id + ", vendedor=" + vendedor.getNome() + ", produtos=" + produtos + ", quantProdutoDisp="
 				+ quantProdutoDisp + ", local=" + local + ", dtinicio=" + dtinicio + ", dtfim=" + dtfim + ", hora="
-				+ hora + "]";
+				+ horario + "]";
 	}
 	
-	public void adicionarProduto(Produto produto) {
-
-        this.produtos.add(produto);
-
-    }
-
-    public void removerProduto(Produto produto) {
-        this.produtos.remove(produto);
-    }
+//	public void setadicionarProduto(Produto produto) {
+//        this.produtos.add(produto);
+//
+//    }
+//
+//    public void setremoverProduto(Produto produto) {
+//        this.produtos.remove(produto);
+//    }
 	
 	
 }

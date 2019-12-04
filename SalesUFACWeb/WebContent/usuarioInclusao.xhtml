@@ -50,14 +50,7 @@
 						value="#{usuarioControlador.usuario.senha}"
 						requiredMessage="#{msgs['usuario.senha.obrigatoria']}" />
 					<h:message for="senha" />
-					
-				<!-- <h:selectOneMenu id="usuario" converter="usuarioConversor"
-						value="#{usuarioControlador.usuario}" required="true">
-						<f:selectItem noSelectionOption="true"
-							itemLabel="--#{msgs['app.selecione']}--" />
-						<f:selectItems value="#{clienteControlador.cliente}"
-							var="cliente" itemValue="#{cliente}" itemLabel="#{cliente.nome}" />
-				</h:selectOneMenu> -->
+
 				</h:panelGrid>
 
 				<h:commandButton value="confirmar"

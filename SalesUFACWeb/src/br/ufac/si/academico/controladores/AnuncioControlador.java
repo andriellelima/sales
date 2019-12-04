@@ -2,6 +2,7 @@ package br.ufac.si.academico.controladores;
 
 import java.util.*;
 import javax.faces.bean.*;
+import javax.faces.context.FacesContext;
 
 import br.ufac.si.academico.entidades.*;
 import br.ufac.si.academico.gerentes.*;
@@ -37,6 +38,9 @@ public class AnuncioControlador {
 	}
 	
 	public String adicionar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Vendedor ven = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
+		anuncio.setVendedor(ven);
 		ag.adicionar(anuncio);
 		return "anuncioGerenciamento";
 	}

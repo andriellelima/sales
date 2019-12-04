@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/geral.xhtml">
+		<ui:define name="conteudo">
+			<h2>#{msgs['anuncio.gerenciamento']}</h2>
+
+			<h:form>
+				<h:outputLabel value="Pesquisa:" for="chave" />
+				<h:inputText id="chave" value="#{anuncioControlador.chave}" />
+				<h:commandButton action="null" value="buscar" />
+
+				<h:commandButton value="Incluir"
+					action="#{anuncioControlador.incluir}" />
+
+				<h:commandButton value="voltar" action="index" />
+
+				<h:dataTable value="#{anuncioControlador.anuncios}"
+					var="anuncio" border="1">
+
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+				        #{anuncio.nome}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Local</f:facet>
+				        #{anuncio.local}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Horario</f:facet>
+				        #{anuncio.horario}	    
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data inicio:</f:facet>
+						#{anuncio.dtinicio}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data fim:</f:facet>
+				        #{anuncio.dtfim}
+				        
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+					#{msgs['gerenciamento.operacoes']}
+				</f:facet>
+						<h:commandButton value="editar"
+							action="#{anuncioControlador.editar(anuncio)}" />
+						<h:commandButton value="excluir"
+							action="#{anuncioControlador.excluir(anuncio)}" />
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

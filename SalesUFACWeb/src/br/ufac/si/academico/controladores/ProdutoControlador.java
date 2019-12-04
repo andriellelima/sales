@@ -43,7 +43,6 @@ public class ProdutoControlador {
 	public String adicionar() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
-		Usuario usuarioLogado;
 		Vendedor ven = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
 		produto.setVendedor(ven);
 		pg.adicionar(produto);	
@@ -69,6 +68,9 @@ public class ProdutoControlador {
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+	public Produto recuperar(long codigo) {
+		return pg.recuperar(codigo);
 	}
 
 

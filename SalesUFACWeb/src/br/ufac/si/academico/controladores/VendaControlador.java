@@ -2,6 +2,7 @@ package br.ufac.si.academico.controladores;
 
 import java.util.*;
 import javax.faces.bean.*;
+import javax.faces.context.FacesContext;
 
 import br.ufac.si.academico.entidades.*;
 import br.ufac.si.academico.gerentes.*;
@@ -23,7 +24,7 @@ public class VendaControlador {
 
 	public String incluir() {
 		this.venda = new Venda();
-		return "vendaInclusao";
+		return "incluirVenda";
 	}
 	
 	public String editar(Venda venda) {
@@ -37,6 +38,10 @@ public class VendaControlador {
 	}
 	
 	public String adicionar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Usuario usuarioLogado;
+		Vendedor ven = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
+		venda.setVendedor(ven);
 		vg.adicionar(venda);
 		return "vendaGerenciamento";
 	}

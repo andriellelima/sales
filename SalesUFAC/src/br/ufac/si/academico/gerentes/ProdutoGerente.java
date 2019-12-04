@@ -26,8 +26,8 @@ public class ProdutoGerente {
 		em.getTransaction().commit();
 	}
 	
-	public Produto recuperar(long l) {
-		return em.find(Produto.class, l);
+	public Produto recuperar(long id) {
+		return em.find(Produto.class, id);
 	}
 	
 	public void atualizar(Produto produto) {
