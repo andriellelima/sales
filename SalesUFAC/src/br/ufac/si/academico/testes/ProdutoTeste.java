@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.ufac.si.academico.entidades.*;
-import br.ufac.si.academico.gerentes.AnunciarGerente;
+import br.ufac.si.academico.gerentes.AnuncioGerente;
 import br.ufac.si.academico.gerentes.ProdutoGerente;
 import br.ufac.si.academico.gerentes.UsuarioGerente;
 import br.ufac.si.academico.gerentes.VendedorGerente;

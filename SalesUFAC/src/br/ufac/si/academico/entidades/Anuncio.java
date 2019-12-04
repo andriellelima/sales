@@ -43,8 +43,8 @@ public class Anuncio {
 	private String dtinicio;
 	@Column(nullable=false)
 	private String dtfim;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date hora;
+//	@Temporal(TemporalType.TIMESTAMP)
+	private String hora;
 	private long quantProdutoDisp;
 	
 	
@@ -59,7 +59,7 @@ public class Anuncio {
 
 	public Anuncio() {}
 	
-	public Anuncio(String nome,Vendedor vendedor, long quantProdutoDisp, String dtinicio, String dtfim, String local, Date horario)  {
+	public Anuncio(String nome,Vendedor vendedor, long quantProdutoDisp, String dtinicio, String dtfim, String local, String horario)  {
 		this.vendedor = vendedor;
 		this.produtos = produtos;
 		this.quantProdutoDisp = quantProdutoDisp;
@@ -114,11 +114,11 @@ public class Anuncio {
 	}
 	
 
-	public Date getHora() {
+	public String getHora() {
 		return hora;
 	}
 
-	public void setHora(Date hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 

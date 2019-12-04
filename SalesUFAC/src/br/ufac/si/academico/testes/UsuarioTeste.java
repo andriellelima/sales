@@ -27,7 +27,7 @@ public class UsuarioTeste {
 		Vendedor v1 = new Vendedor("Mickael", "01642319279","mickaellabres@gmail.com","28/08/1999", "123456");
 		Vendedor v2 = new Vendedor("teste", "05623559679","teste","11/11/1998", "123");
 		Cliente c1 = new Cliente("Andrielle Lima", "12345455900","andrielle@gmail.com", "24/10/1999", "654321");
-		Usuario u = new Usuario("Hulk", "12345678900","teste","24/08/2000", "123", null);
+		Usuario u = new Usuario("Hulk", "12345678900","testejjj","24/08/2000", "123", null);
 		//Usuario u1 = new Usuario("Andrielle Use", "12345455900","andrielle@gmail.com", null, "654321", null);
 		
 

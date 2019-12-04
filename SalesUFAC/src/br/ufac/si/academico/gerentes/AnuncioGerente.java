@@ -60,7 +60,8 @@ public class AnuncioGerente {
 				.getResultList();
 	}	
 	
-	public List<Produto> recuperarPorId(Vendedor id){
+	@SuppressWarnings("unchecked")
+	public List<Produto> recuperarPorId(int id){
         return em.createNamedQuery("Anuncio.ProdutoId").setParameter("termo",id).getResultList();
     }
 	

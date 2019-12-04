@@ -48,31 +48,31 @@ public class ProdutoGerente {
 		atualizar(pr);
 	}
 	
-//	@SuppressWarnings("unchecked")
-//	public List<Produto> recuperarTodosPorVendedor(){
-//		return em.createNamedQuery("Produto.todosPorVendedor")
-//				.getResultList();	
-//	}
-//	@SuppressWarnings("unchecked")
-//	public List<Produto> recuperarTodos(){
-//		return em.createNamedQuery("Produto.todos")
-//				.getResultList();	
-//	}
-//	@SuppressWarnings("unchecked")
-//	public List<Produto> recuperarTodosPorNome(){
-//		return em.createNamedQuery("Produto.todosPorNome")
-//				.getResultList();
-//	}
-//	@SuppressWarnings("unchecked")
-//	public List<Produto> recuperarTodosPorNomeContendo(String termo){
-//		return em
-//				.createNamedQuery("Produto.todosPorNomeContendo")
-//				.setParameter("termo", "%"+termo+"%")
-//				.getResultList();
-//	}	
+	@SuppressWarnings("unchecked")
+	public List<Produto> recuperarTodosPorVendedor(){
+		return em.createNamedQuery("Produto.todosPorVendedor")
+				.getResultList();	
+	}
+	@SuppressWarnings("unchecked")
+	public List<Produto> recuperarTodos(){
+		return em.createNamedQuery("Produto.todos")
+				.getResultList();	
+	}
+	@SuppressWarnings("unchecked")
+	public List<Produto> recuperarTodosPorNome(){
+		return em.createNamedQuery("Produto.todosPorNome")
+				.getResultList();
+	}
+	@SuppressWarnings("unchecked")
+	public List<Produto> recuperarTodosPorNomeContendo(String termo){
+		return em
+				.createNamedQuery("Produto.todosPorNomeContendo")
+				.setParameter("termo", "%"+termo+"%")
+				.getResultList();
+	}	
 	
 	@SuppressWarnings("unchecked")
-	public List<Produto> recuperarPorId(int id){
+	public List<Produto> recuperarPorId(Vendedor id){
         return em.createNamedQuery("Produto.ProdutoId").setParameter("termo",id).getResultList();
     }
 	
