@@ -62,6 +62,10 @@ public class AnuncioControlador {
 	public List<Anuncio> getAnuncios() {
 		return ag.recuperarTodosPorNomeContendo(chave);
 	}
+
+	public List<Produto> getProdutosPorId(){
+        return ag.recuperarPorId(anuncio.getVendedor().getId());
+    }
 	
 	public String getChave() {
 		return chave;

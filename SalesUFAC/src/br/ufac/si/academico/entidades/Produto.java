@@ -11,8 +11,10 @@ import javax.persistence.*;
 		query="SELECT p FROM Produto p ORDER BY p.nome"),
 	@NamedQuery(name="Produto.todosPorNomeContendo", 
 		query="SELECT p FROM Produto p WHERE p.nome LIKE :termo ORDER BY p.nome"),
-	@NamedQuery(name="Produto.porVendedor", 
-	query="SELECT p.vendedor FROM Produto p  WHERE :termo = p.vendedor.id ")	
+//	@NamedQuery(name="Produto.todosPorVendedor", 
+//	query="SELECT p.vendedor FROM Produto p  WHERE :termo = p.vendedor.id "),
+	@NamedQuery(name="Produto.ProdutoId",
+    query="SELECT p FROM Produto p WHERE p.vendedor = :termo ORDER BY p.id")
 })
 
 public class Produto {
@@ -108,7 +110,6 @@ public class Produto {
 				+ ", avaliacao=" + this.avaliacao + ", valor=" + this.valor + ", vendedor=" + this.vendedor + ", quantaval="
 				+ this.quantaval + "]";
 	}
-	
 	
 	
 	

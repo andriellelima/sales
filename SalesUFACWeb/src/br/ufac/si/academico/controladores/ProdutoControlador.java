@@ -72,10 +72,21 @@ public class ProdutoControlador {
 	}
 
 
-	public List<Produto> getProdutosPorNomeContendo() {
-		return pg.recuperarTodosPorNomeContendo(chave);
-	}
+//	public List<Produto> getProdutosPorNomeContendo() {
+//		return pg.recuperarTodosPorNomeContendo(chave);
+//	}
 	
+//	public List<Produto> getTodosPorVendedor() {
+//		return pg.recuperarTodosPorVendedor();
+//	}
+	
+	public List<Produto> getProdutosPorId(){
+		System.out.println("entrou poh");
+		FacesContext context = FacesContext.getCurrentInstance();
+		Usuario usuarioLogado;
+		Vendedor vendedor = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
+        return pg.recuperarPorId(vendedor.getId());
+    }
 	
 	public String getChave() {
 		return chave;

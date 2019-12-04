@@ -18,7 +18,9 @@ import org.hibernate.annotations.Cascade;
 	@NamedQuery(name="Anuncio.todosPorNome", 
 		query="SELECT a FROM Anuncio a ORDER BY a.nome"),
 	@NamedQuery(name="Anuncio.todosPorNomeContendo", 
-		query="SELECT a FROM Anuncio a WHERE a.nome LIKE :termo ORDER BY a.nome")		
+		query="SELECT a FROM Anuncio a WHERE a.nome LIKE :termo ORDER BY a.nome"),
+//	@NamedQuery(name="Anuncio.proid",
+//    query="SELECT p FROM Produto p WHERE p.id = :termo ORDER BY p.id")
 })
 public class Anuncio {
 	
@@ -30,7 +32,7 @@ public class Anuncio {
 	private Vendedor vendedor;
 	@ManyToMany
 	@JoinColumn(name="anuncio")
-	private List <Produto> produtos;
+	private List <Produto> produtos = new ArrayList<>();
 //	@Column(nullable=false)
 //	private long quantProdutoDisp;
 	@Column(nullable=false)
@@ -57,7 +59,7 @@ public class Anuncio {
 
 	public Anuncio() {}
 	
-	public Anuncio(Vendedor vendedor, ArrayList<Produto> produtos, long quantProdutoDisp, String dtinicio, String dtfim, String local, Date horario)  {
+	public Anuncio(String nome,Vendedor vendedor, long quantProdutoDisp, String dtinicio, String dtfim, String local, Date horario)  {
 		this.vendedor = vendedor;
 		this.produtos = produtos;
 		this.quantProdutoDisp = quantProdutoDisp;
@@ -127,8 +129,15 @@ public class Anuncio {
 				+ hora + "]";
 	}
 	
-	
+	public void adicionarProduto(Produto produto) {
 
+        this.produtos.add(produto);
+
+    }
+
+    public void removerProduto(Produto produto) {
+        this.produtos.remove(produto);
+    }
 	
 	
 }

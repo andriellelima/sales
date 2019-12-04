@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import br.ufac.si.academico.entidades.Anuncio;
 import br.ufac.si.academico.entidades.Cliente;
+import br.ufac.si.academico.entidades.Produto;
+import br.ufac.si.academico.entidades.Vendedor;
 
 public class AnuncioGerente {
 
@@ -57,6 +59,10 @@ public class AnuncioGerente {
 				.setParameter("termo", "%"+termo+"%")
 				.getResultList();
 	}	
+	
+	public List<Produto> recuperarPorId(Vendedor id){
+        return em.createNamedQuery("Anuncio.ProdutoId").setParameter("termo",id).getResultList();
+    }
 	
 	public void encerrar() {
 		em.close();

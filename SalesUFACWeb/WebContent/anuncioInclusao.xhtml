@@ -39,10 +39,14 @@
 		 </div>
 		  <div class="form-group">
 		    <label for="produto">Adicionar produto</label>
-		    <h:selectManyCheckbox> 
-		    	<f:selectItens value="#{produtoControlador.produto}" var="produto" itemValue="#{produto}" itemLabel="#{produto.nome}"/>
-		   
-		    </h:selectManyCheckbox>
+		    <h:selectOneMenu id="Produto"
+                  value="#{anuncioControlador.anuncio.produtos}" required="true">
+                  <f:selectItem noSelectionOption="true"
+                       itemLabel="--selecione--" />
+                   <f:selectItems value="#{produtoControlador.produtosPorId}"
+                        var="Produto" itemValue="#{Produto}" itemLabel="#{Produto.nome}" />
+            </h:selectOneMenu>
+		    
 		 </div>
 		 
 		 	<h:commandButton value="confirmar"
