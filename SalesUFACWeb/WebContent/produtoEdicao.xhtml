@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/geral.xhtml">
+		<ui:define name="conteudo">
+			<h2>#{msgs['produto.inclusao']}</h2>
+
+	<h:form>
+		  
+		  <div class="form-group">
+		    <label for="nome">Nome do Produto:</label>
+		    <h:inputText  class="form-control" id="nome" 
+		    value="#{produtoControlador.produto.nome}"/>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="descricao">Descrição do Produto</label>
+		    <h:inputTextarea class="form-control" id="descricao"
+		     rows="3" value="#{produtoControlador.produto.descricao}"></h:inputTextarea>
+	  	 </div>
+	  	 
+	  	 <div class="form-group">
+		    <label for="quantidade">Quantidade do Produto:</label>
+		    <h:inputText  class="form-control" id="quantidade" 
+		    value="#{produtoControlador.produto.quantidade}" />
+		 </div>
+		 
+		 <div class="form-group">
+		    <label for="preco">Preço do Produto:</label>
+		    <h:inputText type="email" class="form-control" id="valor" 
+		    value="#{produtoControlador.produto.valor}" />
+		 </div>
+		 	<h:commandButton value="confirmar"
+					action="#{produtoControlador.atualizar}" />
+				<h:commandButton value="cancelar"
+					action="produtoGerenciamento" immediate="true" />	
+    </h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/geral.xhtml">
+		<ui:define name="conteudo">
+			<h2>#{msgs['usuario.gerenciamento']}</h2>
+
+			<h:form>
+
+				<h:outputLabel value="Pesquisa:" for="chave" />
+				<h:inputText id="chave" value="#{usuarioControlador.chave}" />
+				<h:commandButton action="null"
+					value="buscar" /> 
+
+				<h:commandButton value="Incluir"
+					action="#{usuarioControlador.incluir}" />
+
+				<h:commandButton value="voltar"
+					action="index" />
+
+				<h:dataTable value="#{usuarioControlador.usuariosPorNomeContendo}"
+					var="usuario" border="1">
+					<h:column>
+						<f:facet name="header">CPF </f:facet>
+						#{usuario.cpf}
+			</h:column>
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						#{usuario.nome}
+			</h:column>
+					<h:column>
+						<f:facet name="header">Data Nascimento</f:facet>
+				        #{usuario.dataNascimento}
+			</h:column>
+					<h:column>
+						<f:facet name="header">Email</f:facet>
+				        #{usuario.email}
+			</h:column>
+					<h:column>
+						<f:facet name="header">
+					#{msgs['gerenciamento.operacoes']}
+				</f:facet>
+						<h:commandButton value="editar"
+							action="#{usuarioControlador.editar(usuario)}" />
+						<h:commandButton value="excluir"
+							action="#{usuarioControlador.excluir(usuario)}" />
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

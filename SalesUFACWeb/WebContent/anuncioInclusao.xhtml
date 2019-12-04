@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/geral.xhtml">
+		<ui:define name="conteudo">
+			<h2>#{msgs['anuncio.inclusao']}</h2>
+
+	<h:form>
+		  
+		  <div class="form-group">
+		    <label for="nome">Nome:</label>
+		    <h:inputText  class="form-control" id="nome" 
+		    value="#{anuncioControlador.anuncio.nome}"/>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="descricao">Local</label>
+		    <h:inputTextarea class="form-control" id="descricao"
+		     rows="3" value="#{anuncioControlador.anuncio.local}"></h:inputTextarea>
+	  	 </div>
+	  	 
+	  	 <div class="form-group">
+		    <label for="quantidade">Data Inicio</label>
+		    <h:inputText  class="form-control" id="quantidade" 
+		    value="#{anuncioControlador.anuncio.dtinicio}" />
+		 </div>
+		 
+		 <div class="form-group">
+		    <label for="preco">Data Fim:</label>
+		    <h:inputText type="email" class="form-control" id="valor" 
+		    value="#{anuncioControlador.anuncio.dtfim}" />
+		 </div>
+		  <div class="form-group">
+		    <label for="produto">Adicionar produto</label>
+		    <h:selectManyCheckbox> 
+		    	<f:selectItens value="#{produtoControlador.produto}" var="produto" itemValue="#{produto}" itemLabel="#{produto.nome}"/>
+		   
+		    </h:selectManyCheckbox>
+		 </div>
+		 
+		 	<h:commandButton value="confirmar"
+					action="#{anuncioControlador.adicionar}" />
+				<h:commandButton value="cancelar"
+					action="anuncioGerenciamento" immediate="true" />	
+    </h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

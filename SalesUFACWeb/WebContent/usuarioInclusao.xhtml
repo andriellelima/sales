@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/geral.xhtml">
+		<ui:define name="conteudo">
+			<h2>#{msgs['usuario.inclusao']}</h2>
+
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="CPF:" for="cpf" />
+					<h:inputText id="cpf"
+						value="#{usuarioControlador.usuario.cpf}" required="true"
+						requiredMessage="#{msgs['usuario.cpf.obrigatoria']}"
+						converterMessage="#{msgs['usuario.cpf.tipo']}" />
+					<h:message for="cpf" />
+
+					<h:outputLabel value="Nome:" for="nome" />
+					<h:inputText id="nome" required="true"
+						value="#{usuarioControlador.usuario.nome}"
+						requiredMessage="#{msgs['usuario.nome.obrigatorio']}"
+						validatorMessage="#{msgs['usuario.nome.valido']}">
+					</h:inputText>
+					<h:message for="nome" />
+
+					<h:outputLabel value="#Data Nascimento" for="dataNascimento" />
+					<h:inputText id="dataNascimento" value="#{usuarioControlador.usuario.dataNascimento}"					
+						validatorMessage="#{msgs['usuario.dataNascimento.valido']}">
+						<f:convertDateTime pattern = "dd/mm/yyyy" />
+					</h:inputText>
+					<h:message for="dataNascimento" />
+
+					<h:outputLabel value="Email" for="email" />
+					<h:inputText id="email" required="true"
+						value="#{usuarioControlador.usuario.email}"
+						requiredMessage="#{msgs['usuario.email.obrigatorio']}"
+						validatorMessage="#{msgs['usuario.email.valido']}">
+						<f:validateLength minimum="6" maximum="60" />
+					</h:inputText>
+					<h:message for="email" />
+					
+					<h:outputLabel value="Senha:" for="senha" />
+					<h:inputSecret id="senha"
+						value="#{usuarioControlador.usuario.senha}"
+						requiredMessage="#{msgs['usuario.senha.obrigatoria']}" />
+					<h:message for="senha" />
+				</h:panelGrid>
+
+				<h:commandButton value="confirmar"
+					action="#{usuarioControlador.adicionar}" />
+				<h:commandButton value="cancelar"
+					action="usuarioGerenciamento" immediate="true" />
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

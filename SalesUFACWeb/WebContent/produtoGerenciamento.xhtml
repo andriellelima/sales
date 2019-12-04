@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/geral.xhtml">
+		<ui:define name="conteudo">
+			<h2>#{msgs['produto.gerenciamento']}</h2>
+			<br></br><br></br><br></br>
+			<h:form>
+				<h:outputLabel value="Pesquisar:" for="chave" />
+				<h:inputText id="chave" value="#{produtoControlador.chave}" />
+				<h:commandButton action="null"
+					value="buscar" /> 
+
+				<h:commandButton value="incluir"
+					action="#{produtoControlador.incluir}" />
+
+				<h:commandButton value="voltar"
+					action="index" />
+
+				<h:dataTable value="#{produtoControlador.produtosPorNomeContendo}"
+					var="produto" border="1">
+					<h:column>
+						<f:facet name="header"> Quantidade </f:facet>
+						#{produto.quantidade}
+			</h:column>
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						#{produto.nome}
+			</h:column>
+					<h:column>
+						<f:facet name="header">Descrição</f:facet>
+				        #{produto.descricao}
+			</h:column>
+					<h:column>
+						<f:facet name="header">Preco</f:facet>
+				        #{produto.valor}
+			</h:column>
+					<h:column>
+						<f:facet name="header">
+					#{msgs['gerenciamento.operacoes']}
+				</f:facet>
+						<h:commandButton value="editar"
+							action="#{produtoControlador.editar(produto)}" />
+						<h:commandButton value="excluir"
+							action="#{produtoControlador.excluir(produto)}" />
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
