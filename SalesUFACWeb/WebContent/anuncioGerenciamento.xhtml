@@ -20,7 +20,7 @@
 				<h:commandButton value="Incluir"
 					action="#{anuncioControlador.incluir}" />
 
-				<h:commandButton value="voltar" action="gerenciamento" />
+				<h:commandButton value="voltar" action="gerenciamentoVendedor" />
 
 				<h:dataTable value="#{anuncioControlador.anuncios}"
 					var="anuncio" border="1">
@@ -51,9 +51,9 @@
 					#{msgs['gerenciamento.operacoes']}
 				</f:facet>
 						<h:commandButton value="editar"
-							action="#{anuncioControlador.editar(anuncio)}" />
+							action="#{anuncioControlador.editar(anuncio)}" class="btn btn-outline-warning" />
 						<h:commandButton value="excluir"
-							action="#{anuncioControlador.excluir(anuncio)}" />
+							action="#{anuncioControlador.excluir(anuncio)}" class="btn btn-outline-danger"/>
 					</h:column>
 
 				</h:dataTable>

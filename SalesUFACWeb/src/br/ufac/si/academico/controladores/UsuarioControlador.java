@@ -14,7 +14,7 @@ import javax.servlet.*;
 import br.ufac.si.academico.entidades.*;
 import br.ufac.si.academico.gerentes.*;
 
-@ManagedBean(name="usuarioControlador" , eager = true)
+@ManagedBean(name="usuarioControlador")
 @SessionScoped
 public class UsuarioControlador implements Serializable{
 
@@ -31,15 +31,18 @@ public class UsuarioControlador implements Serializable{
 		cg = new ClienteGerente();
 		vg = new VendedorGerente();
 		ug = new UsuarioGerente();
+		usuario = new Usuario();
 
 	}
 
 	public String incluir() {
 		this.usuario = new Usuario();
+		System.out.println("USUARIO " + usuario);
 		return "usuarioInclusao";
 	}
 	
 	public String editar(Usuario usuario) {
+		System.out.println("EDITANDO PERFIL");
 		this.usuario = usuario;
 		return "usuarioEdicao";
 	}
@@ -50,9 +53,8 @@ public class UsuarioControlador implements Serializable{
 	}
 	
 	public String adicionar() throws NoSuchAlgorithmException {
-		System.out.println("aaaa"+usuario.getFuncao());
-		
 		if (usuario.getFuncao().equals("Cliente")) {
+			
 			Cliente cliente = new Cliente(usuario.getNome(), usuario.getCpf(), usuario.getEmail(), usuario.getDataNascimento(), usuario.getSenha());
 			ug.adicionar(cliente);
 		}
@@ -61,17 +63,19 @@ public class UsuarioControlador implements Serializable{
 			Vendedor vendedor = new Vendedor(usuario.getNome(), usuario.getCpf(), usuario.getEmail(), usuario.getDataNascimento(), usuario.getSenha());
 			ug.adicionar(vendedor);
 		}
-		return "usuarioGerenciamento";
+		return "login.xhtml?faces-redirect=true";
+		//return "usuarioGerenciamento?faces-redirect=true";
 	}
 	
 	public String atualizar() {
+		System.out.println("USER = " + usuario);
 		ug.atualizar(usuario);
 		return "usuarioGerenciamento";
 	}
 	
 	public String remover() {
 		ug.remover(usuario);
-		lc.sair();
+//		lc.sair();
 		return "login";
 	}
 	
@@ -138,6 +142,8 @@ public class UsuarioControlador implements Serializable{
     public String toString() {
         return this.getUsuario().getNome();
     }
+	
+	
 	
 
 

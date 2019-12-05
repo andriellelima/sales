@@ -49,27 +49,24 @@ public class LoginControlador {
 		usuarioLogado = ug.recuperar(login, senha);
 //		usuarioLogado = (Usuario) context.getExternalContext().getSessionMap().get("usuarioLogado");
 		
+
 		if(usuarioLogado != null) {
-			System.out.println(usuarioLogado);
-			context.getExternalContext().getSessionMap().put("usuarioLogado", usuarioLogado);
-			//System.out.println("usuario logado " + usuarioLogado.getFuncao());
-			if(!usuarioLogado.isStatus()) {
+            System.out.println(usuarioLogado);
+            context.getExternalContext().getSessionMap().put("usuarioLogado", usuarioLogado);
+            if(!usuarioLogado.isStatus()) {
 				ug.reativar(usuarioLogado);
-//				return "Desativado";
 			}
-			if (usuarioLogado.getFuncao()==null)
-				return "gerenciamento.xhtml?faces-redirect=true";
-			else if(usuarioLogado.getFuncao().equals("Cliente") ) {
-				return "index.xhtml?faces-redirect=true";
-			}else if (usuarioLogado.getFuncao().equals("Vendedor"))
-				return "gerenciamento.xhtml?faces-redirect=true";
-			
-		}else {
-//			return "login.xhtml?faces-redirect=true";
-			return null;
-		}
-		return login;
-		
+            if (usuarioLogado.getFuncao()==null)
+                return "gerenciamento.xhtml?faces-redirect=true";
+            else if(usuarioLogado.getFuncao().equals("Cliente")) {
+                return "gerenciamentoCliente.xhtml?faces-redirect=true";
+            }else if (usuarioLogado.getFuncao().equals("Vendedor"))
+                return "gerenciamentoVendedor.xhtml?faces-redirect=true";
+
+        }else {
+            return null;
+        }
+        return login;
 	}
 	
 	public String sair() {

@@ -8,6 +8,9 @@ import javax.persistence.*;
 @NamedQueries({
 	@NamedQuery(name="Venda.todos", 
 	query="SELECT v FROM Venda v"),
+	@NamedQuery(name="Venda.todosid", query = "SELECT v FROM Venda v WHERE v.vendedor = :termo ORDER BY v.id"),
+	@NamedQuery(name="Venda.todosidcli", query = "SELECT v FROM Venda v WHERE v.cliente = :termo ORDER BY v.id")
+	
 		
 })
 

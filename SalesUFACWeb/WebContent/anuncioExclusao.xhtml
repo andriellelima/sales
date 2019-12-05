@@ -10,7 +10,7 @@
 <h:body>
 	<ui:composition template="/templates/geral.xhtml">
 		<ui:define name="conteudo">
-			<h2>#{msgs['anuncio.inclusao']}</h2>
+			<h2>#{msgs['anuncio.exclusao']}</h2>
 
 	<h:form>
 		  
@@ -55,9 +55,9 @@
 		 </div>
 		 
 		 	<h:commandButton value="confirmar"
-					action="#{anuncioControlador.remover}" />
+					action="#{anuncioControlador.remover}" class="btn btn-outline-success" />
 				<h:commandButton value="cancelar"
-					action="anuncioGerenciamento" immediate="true" />	
+					action="anuncioGerenciamento" immediate="true" class="btn btn-outline-danger"/>	
     </h:form>
 		</ui:define>
 	</ui:composition>

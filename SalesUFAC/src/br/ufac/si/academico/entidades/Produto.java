@@ -84,8 +84,12 @@ public class Produto {
 		return avaliacao;
 	}
 	public void setAvaliacao(double avaliacao) {
-		this.avaliacao = avaliacao;
+		
+		if(avaliacao>10) {
+			avaliacao =10;
+		}
 		setQuantaval(getQuantaval()+1);
+		this.avaliacao = (avaliacao + getAvaliacao()/getQuantaval());
 	}
 	public Vendedor getVendedor() {
 		return vendedor;

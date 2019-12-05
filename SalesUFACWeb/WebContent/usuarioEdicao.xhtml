@@ -10,14 +10,14 @@
 <h:body>
 	<ui:composition template="/templates/geral.xhtml">
 		<ui:define name="conteudo">
-			<h2>#{msgs['usuario.inclusao']}</h2>
+			<h2>#{msgs['usuario.edicao']}</h2>
 
 			<h:form>
 				<h:panelGrid columns="3">
 
-					<h:outputLabel value="CPF:" for="cpf" disabled="true"/>
+					<h:outputLabel value="CPF:" for="cpf"/>
 					<h:inputText id="cpf"
-						value="#{usuarioControlador.usuario.cpf}" required="true"
+						value="#{usuarioControlador.usuario.cpf}" disabled="true"
 						requiredMessage="#{msgs['usuario.cpf.obrigatoria']}"
 						converterMessage="#{msgs['usuario.cpf.tipo']}" />
 					<h:message for="cpf" />
@@ -42,21 +42,21 @@
 						value="#{usuarioControlador.usuario.email}"
 						requiredMessage="#{msgs['usuario.email.obrigatorio']}"
 						validatorMessage="#{msgs['usuario.email.valido']}">
-						<f:validateLength minimum="6" maximum="60" />
+						<f:validateLength minimum="5" maximum="60" />
 					</h:inputText>
-					<h:message for="email" />
+					<h:message for="email"/>
 					
 					<h:outputLabel value="Senha:" for="senha" />
 					<h:inputSecret id="senha"
-						value="#{usuarioControlador.usuario.senha}" required="true"
-						requiredMessage="#{msgs['usuario.senha.obrigatoria']}" />
-					<h:message for="cpf" />
+						value="#{usuarioControlador.usuario.senha}"
+						requiredMessage="#{msgs['usuario.senha.obrigatoria']}" redisplay = "true" />
+					<h:message for="senha" />
 				</h:panelGrid>
 
-				<h:commandButton value="Confirmar"
-					action="#{usuarioControlador.atualizar}" />
+				<h:commandLink value="Confirmar"
+					action="#{usuarioControlador.atualizar}" class="btn btn-outline-success" />
 				<h:commandButton value="Cancelar"
-					action="usuarioGerenciamento" immediate="true" />
+					action="usuarioGerenciamento" immediate="true" class="btn btn-outline-danger"/>
 
 			</h:form>
 		</ui:define>

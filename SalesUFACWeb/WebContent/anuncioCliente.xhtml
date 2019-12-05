@@ -12,13 +12,11 @@
 		<ui:define name="conteudo">
 			<h2>#{msgs['anuncio.gerenciamento']}</h2>
 
-			<h:form>
-				<h:outputLabel value="Pesquisa:" for="chave" />
-				<h:inputText id="chave" value="#{anuncioControlador.chave}" />
-				<h:commandButton action="null" value="buscar" />
+			
+		
 
 
-				<h:commandButton value="voltar" action="gerenciamento" />
+				<h:link value="voltar" outcome="gerenciamentoCliente" />
 
 				<h:dataTable value="#{anuncioControlador.produtosPorStatus}"
 					var="anuncio" border="1">
@@ -60,28 +58,33 @@
 				        #{anuncio.produtos.descricao}
 				        
 					</h:column>
-										<h:column>
+					<h:column>
 						<f:facet name="header">Vendedor</f:facet>
 				        #{anuncio.vendedor.nome}
 				        
 					</h:column>
 					<h:column>
+						<f:facet name="header">Avaliação</f:facet>
+				        #{anuncio.produtos.avaliacao}
+				        
+					</h:column>
+					<h:column>
+					<h:form>
 						<div class="form-group">
 							<label for="Nota">valor</label>
 							<h:inputText class="form-control" id="Nota"
-								value="#{anuncioControlador.anuncio.produtos.avaliacao}" />
+								value="#{anuncio.produtos.avaliacao}" />
 						</div>
-					</h:column>
-					<h:column>
 						<f:facet name="header">
 					#{msgs['gerenciamento.operacoes']}
 				</f:facet>
 						<h:commandButton value="Votar"
-							action="#{produtoControlador.atualizarcli}" />
+							action="#{produtoControlador.atualizarcli(anuncio.produtos)}" class="btn btn-outline-warning"/>
+				</h:form>
 					</h:column>
 
+
 				</h:dataTable>
-			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>

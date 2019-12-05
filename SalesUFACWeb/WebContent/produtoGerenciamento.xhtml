@@ -22,7 +22,7 @@
 					action="#{produtoControlador.incluir}" />
 
 				<h:commandButton value="voltar"
-					action="gerenciamento" />
+					action="gerenciamentoVendedor" />
 
 				<h:dataTable value="#{produtoControlador.produtosPorId}"
 					var="produto" border="1">
@@ -47,9 +47,8 @@
 					#{msgs['gerenciamento.operacoes']}
 				</f:facet>
 						<h:commandButton value="editar"
-							action="#{produtoControlador.editar(produto)}" />
-						<h:commandButton value="excluir"
-							action="#{produtoControlador.excluir(produto)}" />
+							action="#{produtoControlador.editar(produto)}" class="btn btn-outline-warning" />
+						
 					</h:column>
 
 				</h:dataTable>

@@ -16,24 +16,26 @@ public class loginFiltro implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		
-		HttpSession httpsession = httpRequest.getSession(false);
-		
-		String loginURI = httpRequest.getContextPath() + "/login.xhtml";
-		
-		boolean estaLogado = (httpsession != null && httpsession.getAttribute("usuarioLogado") != null);
-		boolean acessandoLogin = httpRequest.getRequestURI().equals(loginURI);
-		boolean acessandoRecursos = httpRequest.getRequestURI().startsWith(httpRequest.getContextPath()+"/resources");
-		if(estaLogado || acessandoLogin || acessandoRecursos) {
-			chain.doFilter(request, response);
-		}else {
-			httpResponse.sendRedirect(loginURI);
-		}
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        HttpSession httpsession = httpRequest.getSession(false);
+
+        String loginURI = httpRequest.getContextPath() + "/login.xhtml";
+        String usuarioInclusao = httpRequest.getContextPath() + "/usuarioInclusao.xhtml";
+
+        boolean acessandoInclusao = httpRequest.getRequestURI().equals(usuarioInclusao);
+
+        boolean estaLogado = (httpsession != null && httpsession.getAttribute("usuarioLogado") != null);
+        boolean acessandoLogin = httpRequest.getRequestURI().equals(loginURI);
+        boolean acessandoRecursos = httpRequest.getRequestURI().startsWith(httpRequest.getContextPath()+"/resources");
+
+         if(estaLogado||  acessandoLogin || acessandoRecursos || acessandoInclusao ) {
+            chain.doFilter(request, response);
+        }else {
+            httpResponse.sendRedirect(loginURI);
+        }
 
 	}
 

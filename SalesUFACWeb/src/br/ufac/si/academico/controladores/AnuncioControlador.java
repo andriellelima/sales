@@ -37,13 +37,14 @@ public class AnuncioControlador {
 		return "anuncioExclusao";
 	}
 	
+	
 	public String adicionar() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Vendedor ven = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
-		anuncio.setVendedor(ven);
-		ag.adicionar(anuncio);
-		return "anuncioGerenciamento";
-	}
+        FacesContext context = FacesContext.getCurrentInstance();
+        Vendedor ven = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
+        anuncio.setVendedor(ven);
+        ag.adicionar(anuncio);
+        return "anuncioGerenciamento";
+    }
 	
 	public String atualizar() {
 		ag.atualizar(anuncio);

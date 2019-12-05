@@ -68,10 +68,19 @@ public class VendaControlador {
 		this.venda = venda;
 	}
 //
-//	public List<Venda> getVendas() {
-//		return vg.recuperarTodosPorNomeContendo(chave);
-//	}
+	public List<Venda> getVendas() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Vendedor vendedor = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
+		return vg.recuperarTodosid(vendedor);
+	}
 	
+	public List<Venda> getVendascli() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Cliente vendedor = (Cliente) context.getExternalContext().getSessionMap().get("usuarioLogado");
+		return vg.recuperarTodosidcli(vendedor);
+	}
+	
+
 	public String getChave() {
 		return chave;
 	}

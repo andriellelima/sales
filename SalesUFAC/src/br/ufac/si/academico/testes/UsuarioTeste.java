@@ -35,8 +35,8 @@ public class UsuarioTeste {
 
 		ug.adicionar(v2);
 		ug.adicionar(v1);
-//		ug.adicionar(c1);
-//		ug.adicionar(c2);
+		ug.adicionar(c1);
+		ug.adicionar(c2);
 		
 
 		

@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import br.ufac.si.academico.entidades.Cliente;
 import br.ufac.si.academico.entidades.Venda;
+import br.ufac.si.academico.entidades.Vendedor;
 
 public class VendaGerente {
 
@@ -76,12 +77,20 @@ public class VendaGerente {
 //		return em.createNamedQuery("Venda.todosPorNome")
 //				.getResultList();
 //	}
-//	@SuppressWarnings("unchecked")
-//	public List<Venda> recuperarTodosPorNomeContendo(String termo){
-//		return em
-//				.createNamedQuery("Venda.todosPorNomeContendo")
-//				.setParameter("termo", "%"+termo+"%")
-//				.getResultList();
-//	}	
+	@SuppressWarnings("unchecked")
+	public List<Venda> recuperarTodosid(Vendedor ven){
+		return em
+				.createNamedQuery("Venda.todosid")
+				.setParameter("termo", ven)
+				.getResultList();
+	}	
+	
+	@SuppressWarnings("unchecked")
+	public List<Venda> recuperarTodosidcli(Cliente ven){
+		return em
+				.createNamedQuery("Venda.todosidcli")
+				.setParameter("termo", ven)
+				.getResultList();
+	}	
 
 }

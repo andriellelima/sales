@@ -57,7 +57,7 @@ public class ProdutoControlador {
 		return "produtoGerenciamento";
 	}
 	
-	public String atualizarcli() {
+	public String atualizarcli(Produto produto) {
 		pg.atualizar(produto);
 		return "anuncioCliente";
 	}

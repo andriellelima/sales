@@ -10,7 +10,7 @@
 <h:body>
 	<ui:composition template="/templates/geral.xhtml">
 		<ui:define name="conteudo">
-			<h2>#{msgs['produto.inclusao']}</h2>
+			<h2>#{msgs['produto.edicao']}</h2>
 
 	<h:form>
 		  
@@ -38,9 +38,9 @@
 		    value="#{produtoControlador.produto.valor}" />
 		 </div>
 		 	<h:commandButton value="confirmar"
-					action="#{produtoControlador.atualizar}" />
+					action="#{produtoControlador.atualizar}" class="btn btn-outline-success"/>
 				<h:commandButton value="cancelar"
-					action="produtoGerenciamento" immediate="true" />	
+					action="produtoGerenciamento" immediate="true" class="btn btn-outline-danger" />	
     </h:form>
 		</ui:define>
 	</ui:composition>

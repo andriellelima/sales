@@ -14,12 +14,9 @@
 
 			<h:form>
 
-				<h:commandButton value="Incluir"
-					action="#{vendaControlador.incluir}" />
+				<h:commandButton value="voltar" action="gerenciamentoCliente" />
 
-				<h:commandButton value="voltar" action="gerenciamentoVendedor" />
-
-				<h:dataTable value="#{vendaControlador.vendas}"
+				<h:dataTable value="#{vendaControlador.vendascli}"
 					var="venda" border="1">
 
 					<h:column>

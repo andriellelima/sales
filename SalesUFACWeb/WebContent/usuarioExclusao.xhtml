@@ -10,7 +10,7 @@
 <h:body>
 	<ui:composition template="/templates/geral.xhtml">
 		<ui:define name="conteudo">
-			<h2>#{msgs['usuario.inclusao']}</h2>
+			<h2>#{msgs['usuario.exclusao']}</h2>
 
 			<h:form>
 				<h:panelGrid columns="3">
@@ -32,9 +32,9 @@
 				</h:panelGrid>
 
 				<h:commandButton value="confirmar"
-					action="#{usuarioControlador.remover}" />
+					action="#{usuarioControlador.remover}" class="btn btn-outline-success"/>
 				<h:commandButton value="cancelar"
-					action="usuarioGerenciamento" immediate="true" />
+					action="usuarioGerenciamento" immediate="true" class="btn btn-outline-danger" />
 
 			</h:form>
 		</ui:define>
