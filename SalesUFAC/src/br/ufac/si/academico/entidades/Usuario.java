@@ -14,8 +14,8 @@ import javax.persistence.*;
 		query="SELECT u FROM Usuario u"), 
 	@NamedQuery(name="Usuario.todosPorNome", 
 		query="SELECT u FROM Usuario u ORDER BY u.nome"),
-	@NamedQuery(name="Usuario.todosPorNomeContendo", 
-		query="SELECT u FROM Usuario u WHERE u.nome LIKE :termo ORDER BY u.nome")	,
+	@NamedQuery(name="Usuario.user", 
+		query="SELECT u FROM Usuario u WHERE u.id = :termo"),
 	@NamedQuery(name="Usuario.poremail", 
 	query="SELECT u FROM Usuario u WHERE u.email LIKE :termo ORDER BY u.email"),
 	@NamedQuery(name = "Usuario.login",
@@ -37,6 +37,8 @@ public class Usuario {
 	private String senha;
 	@Column(nullable=true) // mudar
 	private String Funcao;
+	@Column(nullable = false)
+	private boolean status = true;
 	
 	public Usuario() {}
 	
@@ -81,8 +83,10 @@ public class Usuario {
 	public String getSenha() {
 		return senha;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSenha(String senha) throws NoSuchAlgorithmException {
+		MessageDigest m=MessageDigest.getInstance("MD5");
+		m.update(senha.getBytes(),0,senha.length());
+		this.senha = new BigInteger(1,m.digest()).toString(16);
 	}
 
 	public String getEmail() {
@@ -102,6 +106,14 @@ public class Usuario {
 		Funcao = funcao;
 	}
 
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public static String getLogin() {
 		return login;
 	}
@@ -111,6 +123,7 @@ public class Usuario {
 		return "Usuario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", dataNascimento="
 				+ dataNascimento + ", senha=" + senha + "]";
 	}
+	
 	
 	
 	

@@ -67,8 +67,8 @@ public class AnuncioControlador {
 		return ag.recuperarTodosPorNomeContendo(chave);
 	}
 
-	public List<Produto> getProdutosPorId(){
-        return ag.recuperarPorId(anuncio.getVendedor().getId());
+	public List<Anuncio> getProdutosPorStatus(){
+        return ag.recuperarPorStatus();
     }
 	
 	public String getChave() {

@@ -72,7 +72,7 @@ public class VendedorGerente {
 				.getResultList();
 	}	
 	@SuppressWarnings("unchecked")
-	public Vendedor recuperaID(long termo) {
+	public Vendedor recuperaID(int termo) {
 		return (Vendedor) em.createNamedQuery("Vendedor.porid").setParameter("termo", termo).getSingleResult();
 	}
 	

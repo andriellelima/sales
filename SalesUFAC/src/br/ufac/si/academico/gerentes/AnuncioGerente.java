@@ -61,8 +61,8 @@ public class AnuncioGerente {
 	}	
 	
 	@SuppressWarnings("unchecked")
-	public List<Produto> recuperarPorId(int id){
-        return em.createNamedQuery("Anuncio.ProdutoId").setParameter("termo",id).getResultList();
+	public List<Anuncio> recuperarPorStatus(){
+        return em.createNamedQuery("Anuncio.porstatus").getResultList();
     }
 	
 	public void encerrar() {

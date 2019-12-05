@@ -2,6 +2,7 @@ package br.ufac.si.academico.controladores;
 
 import java.util.*;
 import javax.faces.bean.*;
+import javax.faces.context.FacesContext;
 
 import br.ufac.si.academico.entidades.*;
 import br.ufac.si.academico.gerentes.*;
@@ -59,8 +60,10 @@ public class VendedorControlador {
 		this.vendedor = vendedor;
 	}
 
-	public List<Vendedor> getVendedors() {
-		return vg.recuperarTodosPorNomeContendo(chave);
+	public Vendedor getvendedorId() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Usuario usuario =(Usuario) context.getExternalContext().getSessionMap().get("usuarioLogado");
+		return vg.recuperaID(usuario.getId());
 	}
 	
 	public String getChave() {

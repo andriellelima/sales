@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.logging.*;
 import javax.faces.bean.*;
+import javax.faces.context.FacesContext;
 import javax.servlet.*;
 
 
@@ -20,7 +21,7 @@ public class UsuarioControlador implements Serializable{
 	private UsuarioGerente ug;
 	private ClienteGerente cg;
 	private VendedorGerente vg;
-
+	private LoginControlador lc;
 	private Usuario usuario;
 	private String chave = "";
 	private static final Logger LOG = Logger.getLogger(Usuario.class.getName());
@@ -70,7 +71,13 @@ public class UsuarioControlador implements Serializable{
 	
 	public String remover() {
 		ug.remover(usuario);
-		return "usuarioGerenciamento";
+		lc.sair();
+		return "login";
+	}
+	
+	public String reativar() {
+		ug.reativar(usuario);
+		return "login";
 	}
 
 	public Usuario getUsuario() {
@@ -88,7 +95,11 @@ public class UsuarioControlador implements Serializable{
 	public List<Usuario> getUsuariosPorNomeContendo() {
 		return ug.recuperarTodosPorNomeContendo(chave);
 	}
-	
+	public List<Usuario> getuser() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Usuario usuario = (Usuario) context.getExternalContext().getSessionMap().get("usuarioLogado");
+		return ug.user(usuario.getId());
+	}
 	
 	public String getChave() {
 		return chave;

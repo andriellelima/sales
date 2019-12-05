@@ -57,6 +57,11 @@ public class ProdutoControlador {
 		return "produtoGerenciamento";
 	}
 	
+	public String atualizarcli() {
+		pg.atualizar(produto);
+		return "anuncioCliente";
+	}
+	
 	public String remover() {
 		pg.remover(produto);
 		return "produtoGerenciamento";
@@ -83,10 +88,8 @@ public class ProdutoControlador {
 	}
 	
 	public List<Produto> getProdutosPorId(){
-		System.out.println("entrou poh");
 		FacesContext context = FacesContext.getCurrentInstance();
 		Vendedor vendedor = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
-		System.out.println(vendedor.toString());
         return pg.recuperarPorId(vendedor);
     }
 	

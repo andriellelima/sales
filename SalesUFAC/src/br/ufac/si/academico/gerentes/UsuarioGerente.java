@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 import br.ufac.si.academico.entidades.Cliente;
 import br.ufac.si.academico.entidades.Usuario;
+import br.ufac.si.academico.entidades.Vendedor;
 
 public class UsuarioGerente {
 
@@ -40,8 +41,16 @@ public class UsuarioGerente {
 	}
 	
 	public void remover(Usuario usuario) {
+		usuario.setStatus(false);
 		em.getTransaction().begin();
-		em.remove(usuario);
+		em.merge(usuario);
+		em.getTransaction().commit();
+	}
+	
+	public void reativar(Usuario usuario) {
+		usuario.setStatus(true);
+		em.getTransaction().begin();
+		em.merge(usuario);
 		em.getTransaction().commit();
 	}
 	
@@ -63,10 +72,10 @@ public class UsuarioGerente {
 				.getResultList();
 	}	
 	@SuppressWarnings("unchecked")
-	public List<Usuario> poremail(String termo){
+	public List<Usuario> user(int i){
 		return em
-				.createNamedQuery("Usuario.poremail")
-				.setParameter("termo", "%"+termo+"%")
+				.createNamedQuery("Usuario.user")
+				.setParameter("termo", i)
 				.getResultList();
 	}	
 	

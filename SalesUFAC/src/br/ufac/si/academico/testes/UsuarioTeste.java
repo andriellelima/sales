@@ -33,11 +33,10 @@ public class UsuarioTeste {
 		Cliente c3 = new Cliente("briuno Lima", "13234455900","andriel323le@gmail.com", "24/10/1999", "654321");
 		Cliente c4 = new Cliente("ldks Lima", "12345453900","andriel2331le@gmail.com", "24/10/1999", "654321");
 
-		ug.adicionar(c4);
-		ug.adicionar(c3);
-		ug.adicionar(c1);
-		ug.adicionar(c2);
-	
+		ug.adicionar(v2);
+		ug.adicionar(v1);
+//		ug.adicionar(c1);
+//		ug.adicionar(c2);
 		
 
 		

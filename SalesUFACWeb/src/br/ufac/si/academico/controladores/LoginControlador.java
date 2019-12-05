@@ -53,9 +53,13 @@ public class LoginControlador {
 			System.out.println(usuarioLogado);
 			context.getExternalContext().getSessionMap().put("usuarioLogado", usuarioLogado);
 			//System.out.println("usuario logado " + usuarioLogado.getFuncao());
+			if(!usuarioLogado.isStatus()) {
+				ug.reativar(usuarioLogado);
+//				return "Desativado";
+			}
 			if (usuarioLogado.getFuncao()==null)
 				return "gerenciamento.xhtml?faces-redirect=true";
-			else if(usuarioLogado.getFuncao().equals("Cliente")) {
+			else if(usuarioLogado.getFuncao().equals("Cliente") ) {
 				return "index.xhtml?faces-redirect=true";
 			}else if (usuarioLogado.getFuncao().equals("Vendedor"))
 				return "gerenciamento.xhtml?faces-redirect=true";

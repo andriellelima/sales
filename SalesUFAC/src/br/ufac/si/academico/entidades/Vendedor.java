@@ -15,7 +15,7 @@ import javax.persistence.*;
 	@NamedQuery(name="Vendedor.todosPorNomeContendo", 
 		query="SELECT v FROM Vendedor v WHERE v.nome LIKE :termo ORDER BY v.nome"),
 	@NamedQuery(name="Vendedor.porid", 
-	query="SELECT v FROM Vendedor v WHERE v.id = :termo")
+	query="SELECT v FROM Vendedor v WHERE v.id = :termo ORDER BY v.id")
 })
 public class Vendedor extends Usuario {
 	

@@ -22,33 +22,13 @@
 						converterMessage="#{msgs['usuario.cpf.tipo']}" />
 					<h:message for="cpf" />
 
-					<h:outputLabel value="#{msgs['usuario.nome']}: " for="nome" />
+					<h:outputLabel value="Nome: " for="nome" />
 					<h:inputText id="nome" required="true"
 						value="#{usuarioControlador.usuario.nome}"
 						requiredMessage="#{msgs['usuario.nome.obrigatorio']}"
 						validatorMessage="#{msgs['usuario.nome.valido']}">
 					</h:inputText>
 					<h:message for="nome" />
-
-					<h:outputLabel value="#{msgs['usuario.dataNascimento']}:" for="dataNascimento" />
-					<h:inputText id="dataNascimento" value="#{usuarioControlador.usuario.dataNascimento}"
-						validatorMessage="#{msgs['usuario.dataNascimento.valido']}">
-					</h:inputText>
-					<h:message for="dataNascimento" />
-
-					<h:outputLabel value="#{msgs['usuario.email']}:" for="email" />
-					<h:inputText id="email" required="true"
-						value="#{usuarioControlador.usuario.email}"
-						requiredMessage="#{msgs['usuario.email.obrigatorio']}"
-						validatorMessage="#{msgs['usuario.email.valido']}">
-					</h:inputText>
-					<h:message for="email" />
-					
-					<h:outputLabel value="Senha:" for="senha" />
-					<h:inputSecret id="senha"
-						value="#{usuarioControlador.usuario.senha}" required="true"
-						requiredMessage="#{msgs['usuario.senha.obrigatoria']}" />
-					<h:message for="senha" />
 				</h:panelGrid>
 
 				<h:commandButton value="confirmar"

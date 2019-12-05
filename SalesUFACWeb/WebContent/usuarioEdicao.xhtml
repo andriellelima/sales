@@ -22,7 +22,7 @@
 						converterMessage="#{msgs['usuario.cpf.tipo']}" />
 					<h:message for="cpf" />
 
-					<h:outputLabel value="#{msgs['usuario.nome']}: " for="nome" />
+					<h:outputLabel value="Nome" for="nome" />
 					<h:inputText id="nome" required="true"
 						value="#{usuarioControlador.usuario.nome}"
 						requiredMessage="#{msgs['usuario.nome.obrigatorio']}"
@@ -30,14 +30,14 @@
 					</h:inputText>
 					<h:message for="nome" />
 
-					<h:outputLabel value="#{msgs['usuario.dataNascimento']}:" for="dataNascimento" />
+					<h:outputLabel value="Data de Nascimento" for="dataNascimento" />
 					<h:inputText id="dataNascimento" value="#{usuarioControlador.usuario.dataNascimento}"
 						validatorMessage="#{msgs['usuario.dataNascimento.valido']}">
 						<f:validateLength minimum="6" maximum="11" />
 					</h:inputText>
 					<h:message for="dataNascimento" />
 
-					<h:outputLabel value="#{msgs['usuario.email']}:" for="email" />
+					<h:outputLabel value="Email" for="email" />
 					<h:inputText id="email" required="true"
 						value="#{usuarioControlador.usuario.email}"
 						requiredMessage="#{msgs['usuario.email.obrigatorio']}"
@@ -53,9 +53,9 @@
 					<h:message for="cpf" />
 				</h:panelGrid>
 
-				<h:commandButton value="#{msgs['acao.confirmar']}"
+				<h:commandButton value="Confirmar"
 					action="#{usuarioControlador.atualizar}" />
-				<h:commandButton value="#{msgs['acao.cancelar']}"
+				<h:commandButton value="Cancelar"
 					action="usuarioGerenciamento" immediate="true" />
 
 			</h:form>

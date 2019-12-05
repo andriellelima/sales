@@ -14,18 +14,10 @@
 
 			<h:form>
 
-				<h:outputLabel value="Pesquisa:" for="chave" />
-				<h:inputText id="chave" value="#{usuarioControlador.chave}" />
-				<h:commandButton action="null"
-					value="buscar" /> 
-
-				<h:commandButton value="Incluir"
-					action="#{usuarioControlador.incluir}" />
-
 				<h:commandButton value="voltar"
 					action="gerenciamento" />
 
-				<h:dataTable value="#{usuarioControlador.usuariosPorNomeContendo}"
+				<h:dataTable value="#{usuarioControlador.user}"
 					var="usuario" border="1">
 					<h:column>
 						<f:facet name="header">CPF </f:facet>

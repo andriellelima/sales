@@ -19,8 +19,8 @@ import org.hibernate.annotations.Cascade;
 		query="SELECT a FROM Anuncio a ORDER BY a.nome"),
 	@NamedQuery(name="Anuncio.todosPorNomeContendo", 
 		query="SELECT a FROM Anuncio a WHERE a.nome LIKE :termo ORDER BY a.nome"),
-//	@NamedQuery(name="Anuncio.proid",
-//    query="SELECT p FROM Produto p WHERE p.id = :termo ORDER BY p.id")
+	@NamedQuery(name="Anuncio.porstatus",
+    query="SELECT a FROM Anuncio a, Usuario u  WHERE a.vendedor = u.id AND u.status = true")
 })
 public class Anuncio {
 	
