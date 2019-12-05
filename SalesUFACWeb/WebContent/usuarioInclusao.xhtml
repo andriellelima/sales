@@ -13,6 +13,12 @@
 			<h2>#{msgs['usuario.inclusao']}</h2>
 
 			<h:form>
+			<h:selectOneMenu id="funcao" value="#{usuarioControlador.usuario.funcao}">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="--selecione--" />
+						<f:selectItem itemValue="Cliente" itemLabel="Cliente" />
+						<f:selectItem itemValue="Vendedor" itemLabel="Vendedor" />
+			</h:selectOneMenu>
 				<h:panelGrid columns="3">
 					<h:outputLabel value="CPF:" for="cpf" />
 					<h:inputText id="cpf"
@@ -29,10 +35,10 @@
 					</h:inputText>
 					<h:message for="nome" />
 
-					<h:outputLabel value="#Data Nascimento" for="dataNascimento" />
+					<h:outputLabel value="Data Nascimento" for="dataNascimento" />
 					<h:inputText id="dataNascimento" value="#{usuarioControlador.usuario.dataNascimento}"					
-						validatorMessage="#{msgs['usuario.dataNascimento.valido']}">
-						<f:convertDateTime pattern = "dd/mm/yyyy" />
+						validatorMessage="#{msgs['usuario.dataNascimento.valido']}" class="data">
+						<f:validateLength minimum="10" maximum="11" />
 					</h:inputText>
 					<h:message for="dataNascimento" />
 
@@ -50,13 +56,12 @@
 						value="#{usuarioControlador.usuario.senha}"
 						requiredMessage="#{msgs['usuario.senha.obrigatoria']}" />
 					<h:message for="senha" />
-
 				</h:panelGrid>
 
 				<h:commandButton value="confirmar"
-					action="#{usuarioControlador.adicionar}" />
+					action="#{usuarioControlador.adicionar}" class="btn btn-outline-success" />
 				<h:commandButton value="cancelar"
-					action="usuarioGerenciamento" immediate="true" />
+					action="usuarioGerenciamento" immediate="true" class="btn btn-outline-danger"/>
 
 			</h:form>
 		</ui:define>

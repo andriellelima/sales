@@ -27,6 +27,8 @@ public class UsuarioControlador implements Serializable{
 
 	
 	public UsuarioControlador() {
+		cg = new ClienteGerente();
+		vg = new VendedorGerente();
 		ug = new UsuarioGerente();
 
 	}
@@ -46,8 +48,18 @@ public class UsuarioControlador implements Serializable{
 		return "usuarioExclusao";
 	}
 	
-	public String adicionar() {
-		ug.adicionar(usuario);
+	public String adicionar() throws NoSuchAlgorithmException {
+		System.out.println("aaaa"+usuario.getFuncao());
+		
+		if (usuario.getFuncao().equals("Cliente")) {
+			Cliente cliente = new Cliente(usuario.getNome(), usuario.getCpf(), usuario.getEmail(), usuario.getDataNascimento(), usuario.getSenha());
+			ug.adicionar(cliente);
+		}
+		else
+		{
+			Vendedor vendedor = new Vendedor(usuario.getNome(), usuario.getCpf(), usuario.getEmail(), usuario.getDataNascimento(), usuario.getSenha());
+			ug.adicionar(vendedor);
+		}
 		return "usuarioGerenciamento";
 	}
 	
