@@ -17,22 +17,29 @@ public class VendaGerente {
 		em = emf.createEntityManager();
 	}
 
-	public void adicionar(Venda venda) {
+	public String adicionar(Venda venda) {
 
 		try{
-			em.getTransaction().begin();
-			venda.getCliente().setFidelidade((int)venda.getCliente().getFidelidade()+venda.getQuantidade());
-			venda.getProduto().setQuantidade((int)(venda.getProduto().getQuantidade()-venda.getQuantidade()));
-			em.merge(venda.getCliente());
-			em.merge(venda.getProduto());
-			em.persist(venda);
-			em.getTransaction().commit();
+			if((venda.getProduto().getQuantidade()-venda.getQuantidade()) >= 0) {
+				em.getTransaction().begin();
+				venda.getCliente().setFidelidade((int)venda.getCliente().getFidelidade()+venda.getQuantidade());
+				venda.getProduto().setQuantidade((int)(venda.getProduto().getQuantidade()-venda.getQuantidade()));
+				em.merge(venda.getCliente());
+				em.merge(venda.getProduto());
+				em.persist(venda);
+				em.getTransaction().commit();
+				return "Certo";
+			}else {
+				return "Falha";
+			}
+			
 		}catch(Exception e) {
 			venda.getCliente().setFidelidade((int)venda.getCliente().getFidelidade()-venda.getQuantidade());
 			venda.getProduto().setQuantidade((int)(venda.getProduto().getQuantidade()+venda.getQuantidade()));
 			em.merge(venda.getCliente());
 			em.merge(venda.getProduto());
 		}
+		return null;
 	}
 
 

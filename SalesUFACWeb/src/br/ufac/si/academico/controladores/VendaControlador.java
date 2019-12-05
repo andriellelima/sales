@@ -42,8 +42,12 @@ public class VendaControlador {
 		Usuario usuarioLogado;
 		Vendedor ven = (Vendedor) context.getExternalContext().getSessionMap().get("usuarioLogado");
 		venda.setVendedor(ven);
-		vg.adicionar(venda);
-		return "vendaGerenciamento";
+		String A = vg.adicionar(venda);
+		if(A.equalsIgnoreCase("certo")) {
+			return "vendaGerenciamento";			
+		}else {
+			return "Erro";
+		}
 	}
 	
 	public String atualizar() {
