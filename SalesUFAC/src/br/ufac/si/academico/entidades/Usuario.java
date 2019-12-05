@@ -44,13 +44,14 @@ public class Usuario {
 	
 	public Usuario(String nome, String cpf, String email, String dataNascimento2, String senha, String funcao) throws NoSuchAlgorithmException {
 //		this.id = id;
-		MessageDigest m=MessageDigest.getInstance("MD5");
-		m.update(senha.getBytes(),0,senha.length());
+//		MessageDigest m=MessageDigest.getInstance("MD5");
+//		m.update(senha.getBytes(),0,senha.length());
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email.trim().toLowerCase();
 		this.dataNascimento = dataNascimento2;
-		this.senha = new BigInteger(1,m.digest()).toString(16);
+//		this.senha = new BigInteger(1,m.digest()).toString(16);
+		this.senha = senha;
 		this.Funcao = funcao;
 	}
 	@Transient

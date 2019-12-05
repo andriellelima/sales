@@ -37,15 +37,14 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form">
+				<h:form class="login100-form validate-form">
 					<span class="login100-form-title p-b-33"> <img
 						class="masthead-avatar" src="resources/anuncio/img/icon_menu.png"
 						width="75" height="75" />
 						<h3>Sales</h3>
 					</span>
 
-					<div class="wrap-input100 validate-input"
-						data-validate="Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input">
 						<h:inputText class="input100" type="text" name="email"
 							placeholder="Email" value="#{loginControlador.login}" />
 						<span class="focus-input100-1"></span> <span
@@ -62,20 +61,20 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
-						<h:form>
+						
 							<h:commandButton value="Logar" class="login100-form-btn" action="#{loginControlador.entrar}" >
                             </h:commandButton>
-						</h:form>
+					
 					</div>
 					
 			
 					<div class="container-login100-form-btn m-t-20">
-						<h:form>
+						
 							<h:commandButton value="Cadastrar" class="login100-form-btn" action="#{usuarioControlador.incluir}" >
                             </h:commandButton>
-						</h:form>
+						
 					</div>
-				</form>
+				</h:form>
 			</div>
 		</div>
 	</div>

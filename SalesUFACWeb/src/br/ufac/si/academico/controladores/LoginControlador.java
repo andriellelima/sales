@@ -46,6 +46,7 @@ public class LoginControlador {
 	
 	public String entrar() throws NoSuchAlgorithmException {
 		FacesContext context = FacesContext.getCurrentInstance();
+		System.out.println(login+':' + senha);
 		usuarioLogado = ug.recuperar(login, senha);
 //		usuarioLogado = (Usuario) context.getExternalContext().getSessionMap().get("usuarioLogado");
 		
@@ -56,9 +57,8 @@ public class LoginControlador {
             if(!usuarioLogado.isStatus()) {
 				ug.reativar(usuarioLogado);
 			}
-            if (usuarioLogado.getFuncao()==null)
-                return "gerenciamento.xhtml?faces-redirect=true";
-            else if(usuarioLogado.getFuncao().equals("Cliente")) {
+
+            if(usuarioLogado.getFuncao().equals("Cliente")) {
                 return "gerenciamentoCliente.xhtml?faces-redirect=true";
             }else if (usuarioLogado.getFuncao().equals("Vendedor"))
                 return "gerenciamentoVendedor.xhtml?faces-redirect=true";

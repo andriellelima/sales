@@ -108,6 +108,7 @@ public class UsuarioGerente {
 		usuarios = recuperarTodos();
 		for(Usuario usuario : usuarios) {
 			if(usuario.getEmail().equals(login) && usuario.getSenha().equals(Senha)) {
+				System.out.println(usuario);
 				return usuario;
 			}
 		}

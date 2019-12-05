@@ -81,19 +81,21 @@ public class Produto {
 		this.descricao = descricao;
 	}
 	public double getAvaliacao() {
-		return avaliacao;
+		return avaliacao/getQuantaval();
 	}
 	public void setAvaliacao(double avaliacao) {
 		
 		if(avaliacao>10) {
-			avaliacao =10;
+			avaliacao = 10;
 		}
 		setQuantaval(getQuantaval()+1);
-		this.avaliacao = (avaliacao + getAvaliacao()/getQuantaval());
+		this.avaliacao = avaliacao+getAvaliacao();
 	}
 	public Vendedor getVendedor() {
 		return vendedor;
 	}
+	
+
 	
 	public void setVendedor(Vendedor vendedor) {
 		
